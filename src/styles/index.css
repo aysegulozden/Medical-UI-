@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  .light {
+    --mu-canvas: 240 245 250;
+    --mu-surface: 255 255 255;
+    --mu-surface-raised: 255 255 255;
+    --mu-line: 218 227 238;
+    --mu-ink: 16 30 48;
+    --mu-ink-soft: 71 87 110;
+    --mu-ink-faint: 130 146 168;
+
+    --mu-primary: 20 99 214; 
+    --mu-primary-soft: 224 235 252;
+    --mu-primary-ink: 255 255 255;
+
+    --mu-accent: 13 169 168; 
+
+    --mu-success: 22 153 99;
+    --mu-success-soft: 214 244 230;
+
+    --mu-warning: 201 138 4;
+    --mu-warning-soft: 252 240 209;
+
+    --mu-danger: 210 50 62;
+    --mu-danger-soft: 252 226 228;
+
+    color-scheme: light;
+  }
+
+  .dark {
+    --mu-canvas: 9 16 28;
+    --mu-surface: 18 27 43;
+    --mu-surface-raised: 25 36 56;
+    --mu-line: 40 54 79;
+    --mu-ink: 225 233 244;
+    --mu-ink-soft: 158 173 196;
+    --mu-ink-faint: 110 127 153;
+
+    --mu-primary: 80 152 255;
+    --mu-primary-soft: 28 49 84;
+    --mu-primary-ink: 8 16 30;
+
+    --mu-accent: 45 213 209;
+
+    --mu-success: 52 199 137;
+    --mu-success-soft: 18 53 42;
+
+    --mu-warning: 234 179 60;
+    --mu-warning-soft: 56 44 16;
+
+    --mu-danger: 248 113 124;
+    --mu-danger-soft: 58 26 30;
+
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: rgb(var(--mu-line));
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: rgb(var(--mu-canvas));
+    color: rgb(var(--mu-ink));
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--mu-primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgb(var(--mu-primary) / 0.22);
+  }
+}
+
+@layer components {
+  .mu-backdrop {
+    position: relative;
+    background-image:
+      radial-gradient(
+        60rem 40rem at 85% -10%,
+        rgb(var(--mu-primary) / 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 40rem at -5% 10%,
+        rgb(var(--mu-accent) / 0.08),
+        transparent 55%
+      ),
+      linear-gradient(
+        to right,
+        rgb(var(--mu-line) / 0.5) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(var(--mu-line) / 0.5) 1px,
+        transparent 1px
+      );
+    background-size: 100% 100%, 100% 100%, 2.5rem 2.5rem, 2.5rem 2.5rem;
+  }
+
+  .mu-eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
